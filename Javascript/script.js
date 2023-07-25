@@ -30,7 +30,60 @@ const playerOneObject = {
   marker: "X",
 };
 
-const playerTwoObject = {
+const player = {
   name: "muktar",
   marker: "O",
 };
+
+// function printName(player) {
+//   console.log(player.name);
+// }
+// printName();
+function newPlayer(name, marker) {
+  (this.name = name), (this.marker = marker);
+}
+
+const player1 = new newPlayer("hussein", "10");
+console.log(player1.name);
+
+// to re use the code below
+// const playerOneObject = {
+//     name: "hussein",
+//     marker: "X",
+//   };
+
+//   const player = {
+//     name: "muktar",
+//     marker: "O",
+//   };
+
+function Game(name, marker) {
+  this.name = name;
+  this.marker = marker;
+  this.sayName = function () {
+    console.log(name);
+  };
+}
+
+// now to re use the code
+const ply1 = new Game("hussein", "X");
+const ply2 = new Game("muktar", "O");
+console.log(ply2.sayName);
+
+// exrcise
+
+function Book(title, author, pages, read) {
+  (this.title = title),
+    (this.author = author),
+    (this.pages = pages),
+    (this.read = read),
+    (this.info = function () {
+      return `${title} by ${author}, ${pages} pages ${
+        read ? "read" : "not read"
+      }`;
+    });
+}
+
+const book1 = new Book("The Hobit", "J.R.R", 295, false);
+const fn = book1.info();
+console.log(fn);
