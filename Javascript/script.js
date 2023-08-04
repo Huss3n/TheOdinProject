@@ -88,10 +88,53 @@ const book1 = new Book("The Hobit", "J.R.R", 295, false);
 const fn = book1.info();
 console.log(fn);
 
-// src/components/Navbar.jsx
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "../index.css";
-import Logo from "../assets/logo.jpeg";
-import { BiMenuAltRight } from "react-icons/bi";
-import { useMediaQuery } from "@react-hook/media-query"; // Import the useMediaQuery hook
+//  prototypal inheritance
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayName = function () {
+  console.log(`Hello, I'm ${this.name}!`);
+};
+
+function Player(name, marker) {
+  this.name = name;
+  this.marker = marker;
+}
+
+Player.prototype.getMarker = function () {
+  console.log(`My marker is '${this.marker}'`);
+};
+
+// Object.getPrototypeOf(Player.prototype) should
+// return the value of "Person.prototype" instead
+// of "Object.prototype"
+Object.getPrototypeOf(Player.prototype); // returns Object.prototype
+
+// Now make `Player` objects inherit from `Person`
+Object.setPrototypeOf(Player.prototype, Person.prototype);
+Object.getPrototypeOf(Player.prototype); // returns Person.prototype
+
+const plyer1 = new Player("steve", "X");
+const player2 = new Player("also steve", "O");
+
+// player1.sayName(); // Hello, I'm steve!
+player2.sayName(); // Hello, I'm also steve!
+
+// player1.getMarker(); // My marker is 'X'
+player2.getMarker(); // My marker is 'O'
+
+// creating objects in js  => all objects have a prototype[[protoype]] -> internal property
+const x = {};
+
+//          or
+const X = new Object();
+
+// getting the prototype
+console.log(Object.getPrototypeOf(x));
+const myData = getData(); // if this is refactored to return a Promise...
+
+myData.then(function (data) {
+  // .then() tells it to wait until the promise is resolved
+  const pieceOfData = data["whatever"]; // and THEN run the function inside
+});
