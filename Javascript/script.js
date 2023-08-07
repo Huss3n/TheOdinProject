@@ -171,3 +171,13 @@ Enemy.prototype.sayName = function () {
 
 const carl = new Player("carl", "X");
 carl.sayName();
+
+let myLibrary = [];
+
+function Book() {
+  // the constructor...
+}
+
+function addBookToLibrary() {
+  // do stuff here
+}
