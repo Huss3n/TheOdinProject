@@ -66,3 +66,12 @@ const player1 = new Player("steve", "X");
 const player2 = new Player("also steve", "O");
 player1.sayName(); // logs 'steve'
 player2.sayName(); // logs 'also steve'
+
+// oop
+function isGameOver() {
+  // game over logic goes here!
+
+  if (gameOver) {
+    DOMStuff.gameOver(this.winner);
+  }
+}
